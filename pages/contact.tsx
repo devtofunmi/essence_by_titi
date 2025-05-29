@@ -42,12 +42,12 @@ export default function Contact() {
               <span>
                 <strong className="">Phone / WhatsApp:</strong>{" "}
                 <a
-                  href="https://wa.me/2348012345678"
+                  href="https://wa.me/08069234350"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-purple-400 hover:text-purple-300 underline transition duration-200"
                 >
-                  +234 801 234 5678
+                  +2348069234350
                 </a>
               </span>
             </li>

@@ -51,7 +51,7 @@ export default function About() {
         <p className="mt-6 text-lg leading-relaxed">
           Ready to elevate your scent journey?{" "}
           <a
-            href="https://wa.me/2348012345678"
+            href="https://wa.me/08069234350"
             target="_blank"
             rel="noopener noreferrer"
             className="text-purple-500 underline hover:text-purple-400 transition"

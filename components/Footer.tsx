@@ -8,7 +8,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <div className="py-6 text-sm text-center text-gray-600">
+    <div className="py-6 text-sm text-center">
       <p>
         Essence by Titi &copy; {year ?? ""}. All rights reserved.
       </p>

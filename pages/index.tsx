@@ -1,115 +1,97 @@
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import Head from "next/head";
+import Layout from "@/components/Layout";
+import { products } from "@/data/product";
+import ProductCard from "@/components/ProductCard";
+import { useKeenSlider } from "keen-slider/react";
+import "keen-slider/keen-slider.min.css";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 export default function Home() {
+  const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
+    loop: true,
+    mode: "snap",
+    slides: {
+      perView: 2, // Show 2 per view on mobile
+      spacing: 15,
+    },
+    breakpoints: {
+      "(max-width: 479px)": {
+        slides: { perView: 1, spacing: 10 }, // Optional: 1 per view on extra small screens
+      },
+      "(min-width: 640px)": {
+        slides: { perView: 2, spacing: 15 },
+      },
+      "(min-width: 768px)": {
+        slides: { perView: 3, spacing: 20 },
+      },
+    },
+  });
+
   return (
-    <div
-      className={`${geistSans.className} ${geistMono.className} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
-    >
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <Layout>
+      <Head>
+        <title>Essence by Titi – Perfume Catalog</title>
+        <meta
+          name="description"
+          content="Browse premium perfumes by Essence by Titi. Order by messaging us directly."
         />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              pages/index.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      </Head>
+
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-gray-900 via-black to-gray-900 py-20 px-4 text-center animate-fadeIn">
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-purple-800 dark:text-white mb-4">
+          Essence by Titi
+        </h1>
+        <p className="text-gray-700 dark:text-gray-300 text-lg max-w-xl mx-auto mb-6">
+          Discover luxury fragrances that define your essence. Premium scents,
+          timeless elegance.
+        </p>
+        <a
+          href="#catalog"
+          className="bg-purple-700 text-white px-6 py-3 rounded-lg font-medium shadow-lg hover:bg-purple-800 transition"
+        >
+          Shop Catalog
+        </a>
+      </section>
+
+      {/* Product Carousel */}
+      <section
+        id="catalog"
+        className="py-16 px-4 max-w-6xl mx-auto animate-fadeIn"
+      >
+        {/* <h2 className="text-3xl font-bold text-center mb-10 text-purple-700">
+          Perfume Catalog
+        </h2> */}
+
+        <div className="relative">
+          {/* Carousel */}
+          <div ref={sliderRef} className="keen-slider">
+            {products.map((product) => (
+              <div key={product.id} className="keen-slider__slide p-2">
+                <ProductCard product={product} />
+              </div>
+            ))}
+          </div>
+
+          {/* Left Arrow */}
+          <button
+            onClick={() => slider.current?.prev()}
+            className="absolute cursor-pointer top-1/2 left-0 transform -translate-y-1/2 bg-white text-purple-700 shadow-md p-2 rounded-full hover:bg-purple-100 z-10"
+            aria-label="Previous"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <FiChevronLeft size={24} />
+          </button>
+
+          {/* Right Arrow */}
+          <button
+            onClick={() => slider.current?.next()}
+            className="absolute cursor-pointer top-1/2 right-0 transform -translate-y-1/2 bg-white text-purple-700 shadow-md p-2 rounded-full hover:bg-purple-100 z-10"
+            aria-label="Next"
           >
-            Read our docs
-          </a>
+            <FiChevronRight size={24} />
+          </button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+    </Layout>
   );
 }

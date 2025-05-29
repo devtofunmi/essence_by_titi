@@ -15,12 +15,7 @@ export default function About() {
 
       {/* Hero Section */}
       <section className="relative overflow-hidden px-6 py-28 text-center bg-gradient-to-br from-gray-900 via-black to-gray-900">
-        {/* Animated Background Blobs */}
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute w-72 h-72 bg-purple-800/30 rounded-full blur-3xl animate-blob top-0 left-1/4"></div>
-          <div className="absolute w-72 h-72 bg-fuchsia-600/20 rounded-full blur-2xl animate-blob animation-delay-2000 top-1/3 left-2/3"></div>
-          <div className="absolute w-80 h-80 bg-purple-500/20 rounded-full blur-2xl animate-blob animation-delay-4000 top-2/3 left-1/5"></div>
-        </div>
+       
 
         <h1 className="text-5xl md:text-6xl text-white font-extrabold tracking-tight mb-3">
           Our Story

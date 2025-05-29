@@ -8,7 +8,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     <div className="flex flex-col min-h-screen bg-white  text-black  transition-colors duration-300">
       <Navbar  />
       <main className="flex-1">{children}</main>
-      <div className="bg-black text-white">
+      <div className="bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white">
       <Footer />
       </div>
     </div>

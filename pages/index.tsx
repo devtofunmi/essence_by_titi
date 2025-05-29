@@ -5,18 +5,19 @@ import ProductCard from "@/components/ProductCard";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
     loop: true,
     mode: "snap",
     slides: {
-      perView: 2, // Show 2 per view on mobile
+      perView: 2,
       spacing: 15,
     },
     breakpoints: {
       "(max-width: 479px)": {
-        slides: { perView: 1, spacing: 10 }, // Optional: 1 per view on extra small screens
+        slides: { perView: 1, spacing: 10 },
       },
       "(min-width: 640px)": {
         slides: { perView: 2, spacing: 15 },
@@ -38,7 +39,12 @@ export default function Home() {
       </Head>
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-gray-900 via-black to-gray-900 py-20 px-4 text-center animate-fadeIn">
+      <motion.section
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9 }}
+        className="relative bg-gradient-to-br from-gray-900 via-black to-gray-900 py-20 px-4 text-center"
+      >
         <h1 className="text-4xl sm:text-5xl font-extrabold text-purple-800 dark:text-white mb-4">
           Essence by Titi
         </h1>
@@ -48,32 +54,36 @@ export default function Home() {
         </p>
         <a
           href="#catalog"
-          className="bg-purple-700 text-white px-6 py-3 rounded-lg font-medium shadow-lg hover:bg-purple-800 transition"
+          className="bg-purple-700 text-white px-6 py-3 rounded-lg font-medium shadow-lg hover:bg-purple-800 transition duration-300"
         >
           Shop Catalog
         </a>
-      </section>
+      </motion.section>
 
       {/* Product Carousel */}
-      <section
+      <motion.section
         id="catalog"
-        className="py-16 px-4 max-w-6xl mx-auto animate-fadeIn"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1 }}
+        className="py-16 px-4 max-w-6xl mx-auto"
       >
-        {/* <h2 className="text-3xl font-bold text-center mb-10 text-purple-700">
-          Perfume Catalog
-        </h2> */}
-
         <div className="relative">
-          {/* Carousel */}
           <div ref={sliderRef} className="keen-slider">
-            {products.map((product) => (
-              <div key={product.id} className="keen-slider__slide p-2">
+            {products.map((product, i) => (
+              <motion.div
+                key={product.id}
+                className="keen-slider__slide p-2"
+                whileHover={{ scale: 1.03 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
                 <ProductCard product={product} />
-              </div>
+              </motion.div>
             ))}
           </div>
 
-          {/* Left Arrow */}
+          {/* Arrows */}
           <button
             onClick={() => slider.current?.prev()}
             className="absolute cursor-pointer top-1/2 left-0 transform -translate-y-1/2 bg-white text-purple-700 shadow-md p-2 rounded-full hover:bg-purple-100 z-10"
@@ -82,7 +92,6 @@ export default function Home() {
             <FiChevronLeft size={24} />
           </button>
 
-          {/* Right Arrow */}
           <button
             onClick={() => slider.current?.next()}
             className="absolute cursor-pointer top-1/2 right-0 transform -translate-y-1/2 bg-white text-purple-700 shadow-md p-2 rounded-full hover:bg-purple-100 z-10"
@@ -91,7 +100,7 @@ export default function Home() {
             <FiChevronRight size={24} />
           </button>
         </div>
-      </section>
+      </motion.section>
     </Layout>
   );
 }

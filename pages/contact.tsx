@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Layout from "@/components/Layout";
+import { motion } from "framer-motion";
 
 export default function Contact() {
   return (
@@ -12,62 +13,75 @@ export default function Contact() {
         />
       </Head>
 
-      <section className="min-h-[80vh] flex items-center justify-center px-6 animate-fadeIn bg-gradient-to-br from-gray-900 via-black to-gray-900 text-gray-300">
-        <div className="bg-gradient-to-tr from-purple-900/60 via-black/70 to-purple-900/60 shadow-xl rounded-2xl p-10 max-w-md w-full backdrop-blur-md border border-purple-700/50">
-          <h1 className="text-3xl font-extrabold text-purple-400 mb-6 tracking-wide">
-            Get in Touch
-          </h1>
-          <p className="mb-8 text-gray-400">
-            For inquiries or custom orders, reach out via any of the following:
+      {/* Hero Section */}
+      <section className="px-6 py-28 text-center bg-gradient-to-br from-gray-900 via-black to-gray-900">
+        <h1 className="text-5xl md:text-6xl text-white font-extrabold mb-3 tracking-tight">
+          Let’s Connect
+        </h1>
+        <p className="text-white max-w-xl mx-auto text-sm sm:text-base">
+          We’d love to hear from you — whether you’re placing an order, asking a
+          question, or just saying hello.
+        </p>
+      </section>
+
+      {/* Contact Section */}
+      <section className="min-h-[80vh] flex items-center justify-center px-6  text-black">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="w-full max-w-md backdrop-blur-xl bg-white/5 border border-purple-500/30 shadow-2xl rounded-3xl p-10"
+        >
+          <p className="mb-8 text-sm text-black text-center">
+            Reach out via any of the following platforms.
           </p>
 
           <ul className="space-y-6 text-sm">
             <li className="flex items-center space-x-3">
-              <span className="text-purple-500 text-xl">📞</span>
               <span>
-                <strong className="text-white">Phone / WhatsApp:</strong>{" "}
+                <strong className="">Phone / WhatsApp:</strong>{" "}
                 <a
                   href="https://wa.me/2348012345678"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-purple-400 hover:text-purple-600 underline transition"
+                  className="text-purple-400 hover:text-purple-300 underline transition duration-200"
                 >
                   +234 801 234 5678
                 </a>
               </span>
             </li>
 
-            <li className="flex items-center space-x-3">
-              <span className="text-purple-500 text-xl">📧</span>
+            <li className="flex items-start space-x-3">
               <span>
-                <strong className="text-white">Email:</strong>{" "}
+                <strong className="">Email:</strong>{" "}
                 <a
                   href="mailto:essencebytiti@gmail.com"
-                  className="text-purple-400 hover:text-purple-600 underline transition"
+                  className="text-purple-400 hover:text-purple-300 underline transition duration-200"
                 >
                   essencebytiti@gmail.com
                 </a>
               </span>
             </li>
 
-            <li className="flex items-center space-x-3">
-              <span className="text-purple-500 text-xl">📍</span>
+            <li className="flex items-start space-x-3">
               <span>
-                <strong className="text-white">Instagram:</strong>{" "}
+                <strong className="">Instagram:</strong>{" "}
                 <a
                   href="https://instagram.com/essencebytiti"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-purple-400 hover:text-purple-600 underline transition"
+                  className="text-purple-400 hover:text-purple-300 underline transition duration-200"
                 >
                   @essencebytiti
                 </a>
               </span>
             </li>
           </ul>
-        </div>
+        </motion.div>
       </section>
     </Layout>
   );
 }
+
 

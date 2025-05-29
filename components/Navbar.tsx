@@ -10,7 +10,7 @@ export default function Navbar() {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-black shadow-sm transition-colors duration-300">
+    <nav className="fixed top-0 w-full z-50 bg-white shadow-sm transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         <Link href="/" className="text-lg font-bold text-purple-700">
           Essence by Titi
@@ -49,7 +49,7 @@ export default function Navbar() {
 
       {/* Mobile Nav */}
       {isOpen && (
-        <div className="md:hidden px-4 pb-4 text-white space-y-3 text-sm shadow-sm">
+        <div className="md:hidden px-4 pb-4 text-black space-y-3 text-sm shadow-sm">
           <Link href="#catalog" className="block" onClick={toggleMenu}>
             Catalog
           </Link>

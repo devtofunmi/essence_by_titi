@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Layout from "@/components/Layout";
 import { products } from "@/data/product";
+import { productss } from "@/data/productss";
 import ProductCard from "@/components/ProductCard";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
@@ -107,14 +108,14 @@ export default function Home() {
         <h1 className="text-3xl font-bold text-black mb-4">Most Popular</h1>
         <div className="relative">
           <div ref={sliderRef} className="keen-slider">
-            {products.map((product) => (
+            {productss.map((product: { id: any; name?: string; image?: string; description?: string; price?: string; }) => (
               <motion.div
                 key={product.id}
                 className="keen-slider__slide p-2"
                 whileHover={{ scale: 1.03 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <ProductCard product={product} />
+                <ProductCard product={productss} />
               </motion.div>
             ))}
           </div>

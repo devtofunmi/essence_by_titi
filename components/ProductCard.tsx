@@ -46,7 +46,7 @@ export default function ProductCard({ product }: { product: Product }) {
       </motion.p>
       <p className="text-sm font-medium text-black">{product.price}</p>
       <a
-        href={`https://wa.me/2348012345678?text=${encodeURIComponent(message)}`}
+        href={`https://wa.me/2348069234350?text=${encodeURIComponent(message)}`}
         target="_blank"
         rel="noopener noreferrer"
         className="mt-3 w-full text-white text-center inline-block bg-black text-xs px-3 py-2 font-bold rounded-md hover:bg-gray-800 transition"

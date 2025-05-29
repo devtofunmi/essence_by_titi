@@ -142,7 +142,7 @@ export default function Home() {
           See something you love? Ordering is easy — just send us a WhatsApp message and we’ll guide you through your purchase.
         </p>
         <a
-          href="https://wa.me/08069234350"
+          href="https://wa.me/2348069234350"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block bg-black text-white px-6 py-3 rounded-lg font-semibold shadow-lg hover:bg-gray-800 transition"
@@ -174,7 +174,7 @@ export default function Home() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="bg-gray-50 text-center py-20 px-6">
+      <section className="bg-gray-50 text-center py-20 md:px-6 px-5">
         <h2 className="text-3xl sm:text-4xl font-bold text-black mb-4">
           Smell Like Royalty
         </h2>
@@ -182,8 +182,8 @@ export default function Home() {
           It’s more than a scent — it’s your signature. Let’s help you find it.
         </p>
         <a
-          href="https://wa.me/08069234350"
-          className="bg-black text-white px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-gray-800 transition"
+          href="https://wa.me/2348069234350"
+          className="bg-black text-white px-4 md:px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-gray-800 transition"
         >
           Start Your Fragrance Journey
         </a>

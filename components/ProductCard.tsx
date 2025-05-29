@@ -38,18 +38,18 @@ export default function ProductCard({ product }: { product: Product }) {
         {product.name}
       </motion.h3>
       <motion.p
-        className="text-xs text-gray-300 mb-1"
+        className="text-xs text-gray-800 mb-1"
         whileHover={{ y: -2 }}
         transition={{ duration: 0.3 }}
       >
         {product.description}
       </motion.p>
-      <p className="text-sm font-medium text-purple-500">{product.price}</p>
+      <p className="text-sm font-medium text-black">{product.price}</p>
       <a
         href={`https://wa.me/2348012345678?text=${encodeURIComponent(message)}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-3 w-full text-white text-center inline-block bg-purple-600 text-xs px-3 py-2 font-bold rounded-md hover:bg-purple-700 transition"
+        className="mt-3 w-full text-white text-center inline-block bg-black text-xs px-3 py-2 font-bold rounded-md hover:bg-gray-800 transition"
       >
         Message to Order
       </a>

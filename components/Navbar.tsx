@@ -12,26 +12,26 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 w-full z-50 bg-white shadow-sm transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-        <Link href="/" className="text-lg font-bold text-purple-700">
+        <Link href="/" className="text-lg font-bold text-black">
           Essence by Titi
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex space-x-4 text-sm items-center">
-          <Link href="#catalog" className="text-purple-600">
+        <div className="hidden md:flex space-x-4 text-black text-sm items-center">
+          <Link href="#catalog" className="">
             Catalog
           </Link>
-          <Link href="/contact" className="text-purple-600">
+          <Link href="/contact" className="">
             Contact
           </Link>
-          <Link href="/about" className="text-purple-600">
+          <Link href="/about" className="">
             About
           </Link>
           <a
             href="https://wa.me/2348012345678"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 transition"
+            className="bg-black text-white px-4 py-2 rounded-md hover:bg-gray-700 transition"
           >
             Order Now
           </a>
@@ -39,7 +39,7 @@ export default function Navbar() {
 
         {/* Mobile Toggle Button */}
         <button
-          className="md:hidden text-purple-700"
+          className="md:hidden text-black"
           onClick={toggleMenu}
           aria-label="Toggle Menu"
         >
@@ -63,7 +63,7 @@ export default function Navbar() {
             href="https://wa.me/2348012345678"
             target="_blank"
             rel="noopener noreferrer"
-            className="block bg-purple-600 w-fit text-white px-4 py-2 rounded-md hover:bg-purple-700 transition"
+            className="block bg-black w-fit text-white px-4 py-2 rounded-md hover:bg-gray-700 transition"
             onClick={toggleMenu}
           >
             Order Now

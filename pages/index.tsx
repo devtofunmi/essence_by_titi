@@ -7,10 +7,33 @@ import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { motion } from "framer-motion";
+import { useRef } from "react";
 import { testimonials } from "@/data/testimonials";
 
 export default function Home() {
-  const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
+  // Carousel 1 - New Arrivals
+  const [sliderRef1, slider1] = useKeenSlider<HTMLDivElement>({
+    loop: true,
+    mode: "snap",
+    slides: {
+      perView: 2,
+      spacing: 15,
+    },
+    breakpoints: {
+      "(max-width: 479px)": {
+        slides: { perView: 1, spacing: 10 },
+      },
+      "(min-width: 640px)": {
+        slides: { perView: 2, spacing: 15 },
+      },
+      "(min-width: 768px)": {
+        slides: { perView: 3, spacing: 20 },
+      },
+    },
+  });
+
+  // Carousel 2 - Most Popular
+  const [sliderRef2, slider2] = useKeenSlider<HTMLDivElement>({
     loop: true,
     mode: "snap",
     slides: {
@@ -70,11 +93,11 @@ export default function Home() {
         </p>
       </section>
 
-      {/* Product Carousel Section - New Arrivals */}
+      {/* New Arrivals Carousel */}
       <div id="catalog" className="py-16 px-4 max-w-6xl mx-auto">
         <h1 className="text-3xl font-bold text-black mb-4">New Arrivals</h1>
         <div className="relative">
-          <div ref={sliderRef} className="keen-slider">
+          <div ref={sliderRef1} className="keen-slider">
             {products.map((product) => (
               <motion.div
                 key={product.id}
@@ -87,15 +110,15 @@ export default function Home() {
             ))}
           </div>
           <button
-            onClick={() => slider.current?.prev()}
-            className="absolute cursor-pointer top-1/2 left-0 transform -translate-y-1/2 bg-white text-black shadow-md p-2 rounded-full hover:bg-gray-800 z-10"
+            onClick={() => slider1.current?.prev()}
+            className="absolute cursor-pointer top-1/2 left-0 transform -translate-y-1/2 bg-white text-black shadow-md p-2 rounded-full z-10"
             aria-label="Previous"
           >
             <FiChevronLeft size={24} />
           </button>
           <button
-            onClick={() => slider.current?.next()}
-            className="absolute cursor-pointer top-1/2 right-0 transform -translate-y-1/2 bg-white text-black shadow-md p-2 rounded-full hover:bg-gray-800 z-10"
+            onClick={() => slider1.current?.next()}
+            className="absolute cursor-pointer top-1/2 right-0 transform -translate-y-1/2 bg-white text-black shadow-md p-2 rounded-full  z-10"
             aria-label="Next"
           >
             <FiChevronRight size={24} />
@@ -103,32 +126,32 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Product Carousel Section - Most Popular */}
-      <div className="py-16 px-4 max-w-6xl mx-auto ">
+      {/* Most Popular Carousel */}
+      <div className="py-16 px-4 max-w-6xl mx-auto">
         <h1 className="text-3xl font-bold text-black mb-4">Most Popular</h1>
         <div className="relative">
-          <div ref={sliderRef} className="keen-slider">
-            {productss.map((product: { id: any; name?: string; image?: string; description?: string; price?: string; }) => (
+          <div ref={sliderRef2} className="keen-slider">
+            {productss.map((product) => (
               <motion.div
                 key={product.id}
                 className="keen-slider__slide p-2"
                 whileHover={{ scale: 1.03 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <ProductCard product={productss} />
+                <ProductCard product={product} />
               </motion.div>
             ))}
           </div>
           <button
-            onClick={() => slider.current?.prev()}
-            className="absolute cursor-pointer top-1/2 left-0 transform -translate-y-1/2 bg-white text-purple-700 shadow-md p-2 rounded-full hover:bg-purple-100 z-10"
+            onClick={() => slider2.current?.prev()}
+            className="absolute cursor-pointer top-1/2 left-0 transform -translate-y-1/2 bg-white text-black shadow-md p-2 rounded-full hover:bg-purple-100 z-10"
             aria-label="Previous"
           >
             <FiChevronLeft size={24} />
           </button>
           <button
-            onClick={() => slider.current?.next()}
-            className="absolute cursor-pointer top-1/2 right-0 transform -translate-y-1/2 bg-white text-purple-700 shadow-md p-2 rounded-full hover:bg-purple-100 z-10"
+            onClick={() => slider2.current?.next()}
+            className="absolute cursor-pointer top-1/2 right-0 transform -translate-y-1/2 bg-white text-black shadow-md p-2 rounded-full hover:bg-purple-100 z-10"
             aria-label="Next"
           >
             <FiChevronRight size={24} />

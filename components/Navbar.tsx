@@ -28,7 +28,7 @@ export default function Navbar() {
             About
           </Link>
           <a
-            href="https://wa.me/2348012345678"
+            href="https://wa.me/2348069234350"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-black text-white px-4 py-2 rounded-md hover:bg-gray-700 transition"
@@ -60,7 +60,7 @@ export default function Navbar() {
             About
           </Link>
           <a
-            href="https://wa.me/2348012345678"
+            href="https://wa.me/2348069234350"
             target="_blank"
             rel="noopener noreferrer"
             className="block bg-black w-fit text-white px-4 py-2 rounded-md hover:bg-gray-700 transition"
